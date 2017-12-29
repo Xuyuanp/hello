@@ -12,7 +12,8 @@ func main() {
 	if err != nil {
 		hostname = "unknown"
 	}
-	log.Fatal(http.ListenAndServe(":8000", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Greetings from %s", hostname)
-	})))
+	})
+	log.Fatal(http.ListenAndServe(":8000", nil))
 }
