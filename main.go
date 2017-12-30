@@ -13,7 +13,7 @@ func main() {
 		hostname = "unknown"
 	}
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Greetings from %s", hostname)
+		fmt.Fprint(w, hostname)
 	})
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
